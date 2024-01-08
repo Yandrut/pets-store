@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6af7f245-a089-4f80-a881-29bd4f8536b9" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/yandrut/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/yandrut/data/LoginData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/yandrut/data/Specifications.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/yandrut/data/UserData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/yandrut/API/ApiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/yandrut/API/ApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/yandrut/API/ApiTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +42,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG.ApiTest.allowsAddingNewPet.executor": "Run",
+    "TestNG.ApiTest.allowsCreatingUser.executor": "Run",
+    "TestNG.ApiTest.allowsLoginUser.executor": "Run",
     "TestNG.ApiTest.executor": "Run",
     "TestNG.TestClass.allowsCreatingListOfUsers.executor": "Run",
     "TestNG.TestClass.allowsCreatingUser.executor": "Run",
@@ -67,7 +60,7 @@
       <recent name="org.yandrut" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.ApiTest">
+  <component name="RunManager" selected="TestNG.ApiTest.allowsAddingNewPet">
     <configuration name="ApiTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="pets-store" />
       <extension name="coverage">
@@ -85,7 +78,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiTest.allowsCreatingListOfUsers" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="ApiTest.allowsAddingNewPet" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="pets-store" />
       <extension name="coverage">
         <pattern>
@@ -95,7 +88,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.yandrut.API" />
       <option name="MAIN_CLASS_NAME" value="org.yandrut.API.ApiTest" />
-      <option name="METHOD_NAME" value="allowsCreatingListOfUsers" />
+      <option name="METHOD_NAME" value="allowsAddingNewPet" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -159,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.ApiTest" />
+        <item itemvalue="TestNG.ApiTest.allowsAddingNewPet" />
         <item itemvalue="TestNG.ApiTest.allowsLoginUser" />
         <item itemvalue="TestNG.ApiTest.allowsCreatingUser" />
+        <item itemvalue="TestNG.ApiTest" />
         <item itemvalue="TestNG.ApiTest.allowsLogOutUser" />
-        <item itemvalue="TestNG.ApiTest.allowsCreatingListOfUsers" />
       </list>
     </recent_temporary>
   </component>
@@ -183,6 +176,15 @@
       <option name="presentableId" value="Default" />
       <updated>1704199235432</updated>
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1704306625800</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1704306625800</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
