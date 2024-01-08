@@ -19,7 +19,9 @@ public class ApiTest {
     private static final String LOGIN_ENDPOINT = "/login";
     private static final String USER_LIST_ENDPOINT = "/createWithList";
     private static final String LOGOUT_ENDPOINT = "/logout";
-    private static final String CREATE_PET_ENDPOINT = "/pet";
+    private static final String PET_ENDPOINT = "/pet";
+
+    private static PetData pet;
 
     @Test
     public void allowsCreatingUser() {
@@ -100,14 +102,14 @@ public class ApiTest {
     public void allowsAddingNewPet() {
         submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
-        PetData pet = PetData.createPet(1488, "John",
+                pet = PetData.createNewPet(1488, "John",
                 List.of("https://ideyka.com.ua/files/resized/products/4484.1800x1800w.jpg"),
                 "available");
 
         PetDataResponse response = given()
                 .body(pet)
                 .when()
-                .post(CREATE_PET_ENDPOINT)
+                .post(PET_ENDPOINT)
                 .then().log().all()
                 .extract().as(PetDataResponse.class);
 
@@ -118,16 +120,48 @@ public class ApiTest {
 
     @Test
     public void allowsUpdatingPetsImage() {
+        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
+        List<String> photoURLs = List.of("https://img.tsn.ua/cached/754/tsn-2cb3382837f9b91c3a25a3f20b5ee88b/thumbs/428x268/78/f1/7dfbdb544885b3f8c57c9a2b6e0bf178.jpg");
+
+        pet.updatePetsInformation(photoURLs);
+
+        PetDataResponse response = given()
+                .body(pet)
+                .when()
+                .put(PET_ENDPOINT)
+                .then().log().all()
+                .extract().as(PetDataResponse.class);
+
+        List<String> photoURLsActual = response.getPhotoUrls();
+        assertEquals(photoURLs, photoURLsActual);
     }
 
     @Test
     public void allowsUpdatingPetsNameAndStatus() {
+        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
+        pet.updatePetsInformation("Pushok", "not online");
+
+        PetDataResponse response = given()
+                .body(pet)
+                .when()
+                .put(PET_ENDPOINT)
+                .then().log().all()
+                .extract().as(PetDataResponse.class);
+
+        String expected = "Pushok";
+        String actual = response.getName();
+
+        assertEquals(expected, actual);
     }
 
     @Test
     public void allowsDeletingPet() {
+        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
+
+        Integer petId = pet.getId();
+
 
     }
 }

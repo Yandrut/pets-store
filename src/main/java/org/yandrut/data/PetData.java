@@ -33,7 +33,7 @@ public class PetData {
         private String name;
     }
 
-    public static PetData createPet(Integer id, String name, List<String> photoURLs, String status) {
+    public static PetData createNewPet(Integer id, String name, List<String> photoURLs, String status) {
 
         PetData.Category category = new PetData.Category();
         category.setId(id);
@@ -53,5 +53,14 @@ public class PetData {
         pet.setStatus(status);
 
         return pet;
+    }
+
+    public void updatePetsInformation(List <String> photoUrls) {
+        setPhotoUrls(photoUrls);
+    }
+
+    public void updatePetsInformation(String name, String status) {
+        setName(name);
+        setStatus(status);
     }
 }
