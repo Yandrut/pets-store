@@ -20,7 +20,6 @@ public class ApiTest {
     private static final String USER_LIST_ENDPOINT = "/createWithList";
     private static final String LOGOUT_ENDPOINT = "/logout";
     private static final String PET_ENDPOINT = "/pet";
-    private static final String DELETE_PET_ENDPOINT = "/pet/{petId}";
 
     private static PetData pet;
 
@@ -163,7 +162,7 @@ public class ApiTest {
         DeleteUserResponse response = given()
                 .pathParam("petId", petId)
                 .when()
-                .delete(DELETE_PET_ENDPOINT)
+                .delete(PET_ENDPOINT+"/{petId}")
                 .then().log().all()
                 .extract().as(DeleteUserResponse.class);
 
