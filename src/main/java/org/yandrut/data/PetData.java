@@ -62,5 +62,6 @@ public class PetData {
     public void updatePetsInformation(String name, String status) {
         setName(name);
         setStatus(status);
+        tags.get(0).setName(name);
     }
 }

@@ -47,6 +47,7 @@
     "TestNG.ApiTest.allowsCreatingUser.executor": "Run",
     "TestNG.ApiTest.allowsLoginUser.executor": "Run",
     "TestNG.ApiTest.allowsUpdatingPetsImage.executor": "Run",
+    "TestNG.ApiTest.allowsUpdatingPetsNameAndStatus.executor": "Run",
     "TestNG.ApiTest.executor": "Run",
     "TestNG.TestClass.allowsCreatingListOfUsers.executor": "Run",
     "TestNG.TestClass.allowsCreatingUser.executor": "Run",
@@ -62,7 +63,7 @@
       <recent name="org.yandrut" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.ApiTest.allowsUpdatingPetsImage">
+  <component name="RunManager" selected="TestNG.ApiTest">
     <configuration name="ApiTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="pets-store" />
       <extension name="coverage">
@@ -91,24 +92,6 @@
       <option name="PACKAGE_NAME" value="org.yandrut.API" />
       <option name="MAIN_CLASS_NAME" value="org.yandrut.API.ApiTest" />
       <option name="METHOD_NAME" value="allowsAddingNewPet" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApiTest.allowsCreatingUser" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="pets-store" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.yandrut.API.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.yandrut.API" />
-      <option name="MAIN_CLASS_NAME" value="org.yandrut.API.ApiTest" />
-      <option name="METHOD_NAME" value="allowsCreatingUser" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -152,13 +135,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ApiTest.allowsUpdatingPetsNameAndStatus" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="pets-store" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.yandrut.API.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.yandrut.API" />
+      <option name="MAIN_CLASS_NAME" value="org.yandrut.API.ApiTest" />
+      <option name="METHOD_NAME" value="allowsUpdatingPetsNameAndStatus" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.ApiTest" />
+        <item itemvalue="TestNG.ApiTest.allowsUpdatingPetsNameAndStatus" />
         <item itemvalue="TestNG.ApiTest.allowsUpdatingPetsImage" />
         <item itemvalue="TestNG.ApiTest.allowsAddingNewPet" />
         <item itemvalue="TestNG.ApiTest.allowsLoginUser" />
-        <item itemvalue="TestNG.ApiTest.allowsCreatingUser" />
-        <item itemvalue="TestNG.ApiTest" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +195,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704739977436</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="second commit">
+      <option name="closed" value="true" />
+      <created>1704742021358</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704742021358</updated>
+    </task>
+    <task id="LOCAL-00004" summary="second commit">
+      <option name="closed" value="true" />
+      <created>1704742026021</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704742026022</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -20,6 +20,7 @@ public class ApiTest {
     private static final String USER_LIST_ENDPOINT = "/createWithList";
     private static final String LOGOUT_ENDPOINT = "/logout";
     private static final String PET_ENDPOINT = "/pet";
+    private static final String DELETE_PET_ENDPOINT = "/pet/{petId}";
 
     private static PetData pet;
 
@@ -123,7 +124,6 @@ public class ApiTest {
         submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
         List<String> photoURLs = List.of("https://img.tsn.ua/cached/754/tsn-2cb3382837f9b91c3a25a3f20b5ee88b/thumbs/428x268/78/f1/7dfbdb544885b3f8c57c9a2b6e0bf178.jpg");
-
         pet.updatePetsInformation(photoURLs);
 
         PetDataResponse response = given()
@@ -142,7 +142,6 @@ public class ApiTest {
         submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
         pet.updatePetsInformation("Pushok", "not online");
-
         PetDataResponse response = given()
                 .body(pet)
                 .when()
@@ -161,7 +160,16 @@ public class ApiTest {
         submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
         Integer petId = pet.getId();
+        DeleteUserResponse response = given()
+                .pathParam("petId", petId)
+                .when()
+                .delete(DELETE_PET_ENDPOINT)
+                .then().log().all()
+                .extract().as(DeleteUserResponse.class);
 
+        String expected = pet.getId().toString();
+        String actual = response.getMessage();
 
+        assertEquals(expected, actual);
     }
 }
