@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6af7f245-a089-4f80-a881-29bd4f8536b9" name="Changes" comment="second commit">
+    <list default="true" id="6af7f245-a089-4f80-a881-29bd4f8536b9" name="Changes" comment="third commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yandrut/data/PetData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yandrut/data/PetData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yandrut/data/DeleteUserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yandrut/data/ListOfUsersResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yandrut/data/ResponseWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yandrut/data/LogOutUserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yandrut/data/LoginDataResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yandrut/data/UserDataResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/yandrut/API/ApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/yandrut/API/ApiTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,27 +41,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TestNG.ApiTest.allowsAddingNewPet.executor": "Run",
-    "TestNG.ApiTest.allowsCreatingUser.executor": "Run",
-    "TestNG.ApiTest.allowsLoginUser.executor": "Run",
-    "TestNG.ApiTest.allowsUpdatingPetsImage.executor": "Run",
-    "TestNG.ApiTest.allowsUpdatingPetsNameAndStatus.executor": "Run",
-    "TestNG.ApiTest.executor": "Run",
-    "TestNG.TestClass.allowsCreatingListOfUsers.executor": "Run",
-    "TestNG.TestClass.allowsCreatingUser.executor": "Run",
-    "TestNG.TestClass.allowsLogOutUser.executor": "Run",
-    "TestNG.TestClass.allowsLoginUser.executor": "Run",
-    "TestNG.TestClass.verifyAllowsCreatingUser.executor": "Run",
-    "TestNG.TestClass.verifyAllowsLoginUser.executor": "Run",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TestNG.ApiTest.allowsAddingNewPet.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.ApiTest.allowsCreatingUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.ApiTest.allowsLoginUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.ApiTest.allowsUpdatingPetsImage.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.ApiTest.allowsUpdatingPetsNameAndStatus.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.ApiTest.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.TestClass.allowsCreatingListOfUsers.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.TestClass.allowsCreatingUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.TestClass.allowsLogOutUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.TestClass.allowsLoginUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.TestClass.verifyAllowsCreatingUser.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.TestClass.verifyAllowsLoginUser.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.yandrut" />
@@ -211,12 +215,29 @@
       <option name="project" value="LOCAL" />
       <updated>1704742026022</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="third commit">
+      <option name="closed" value="true" />
+      <created>1704784114391</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704784114391</updated>
+    </task>
+    <task id="LOCAL-00006" summary="third commit">
+      <option name="closed" value="true" />
+      <created>1704784224010</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704784224010</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="second commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
+    <MESSAGE value="third commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="third commit" />
   </component>
 </project>

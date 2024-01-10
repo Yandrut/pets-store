@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Pet Store Suite" verbose="1" >
+    <test name="Api Tests" >
+        <classes>
+            <class name="org.yandrut.API.ApiTest">
+              <methods>
+                  <include name="allowsCreatingUser"/>
+                  <include name="allowsLoginUser"/>
+                  <include name="allowsCreatingListOfUsers"/>
+                  <include name="allowsAddingNewPet"/>
+                  <include name="allowsUpdatingPetsImage"/>
+                  <include name="allowsUpdatingPetsNameAndStatus"/>
+                  <include name="allowsDeletingPet"/>
+              </methods>
+        </class>
+        </classes>
+    </test>
+</suite>

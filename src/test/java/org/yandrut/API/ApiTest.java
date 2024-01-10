@@ -31,12 +31,12 @@ public class ApiTest {
                 "Yandruter", "yandrut@yandrut.com", "yandrutYandrut",
                 "380671234567", 1488);
 
-        UserDataResponse response = given()
+        ResponseWrapper response = given()
                 .body(userData)
                 .when()
                 .post(USER_ENDPOINT)
                 .then().log().all()
-                .extract().as(UserDataResponse.class);
+                .extract().as(ResponseWrapper.class);
 
         String expected = "unknown";
         String actual = response.getType();
@@ -51,12 +51,12 @@ public class ApiTest {
         LoginData loginData = new LoginData("Yandrut", "yandrutYandrut");
         String loginDataToJson = new Gson().toJson(loginData);
 
-        LoginDataResponse response = given()
+        ResponseWrapper response = given()
                 .queryParam("credentials", loginDataToJson)
                 .when()
                 .get(USER_ENDPOINT + LOGIN_ENDPOINT)
                 .then().log().all()
-                .extract().as(LoginDataResponse.class);
+                .extract().as(ResponseWrapper.class);
 
         String expectedResponse = response.getMessage();
         assertTrue(expectedResponse.contains("logged in user session:"));
@@ -73,12 +73,12 @@ public class ApiTest {
         List <UserData> userDataList = Arrays.asList(userData, userData, userData, userData);
         String userDataListToJson = new Gson().toJson(userDataList);
 
-        ListOfUsersResponse response = given()
+        ResponseWrapper response = given()
                 .body(userDataListToJson)
                 .when()
                 .post(USER_ENDPOINT + USER_LIST_ENDPOINT)
                 .then().log().all()
-                .extract().as(ListOfUsersResponse.class);
+                .extract().as(ResponseWrapper.class);
 
         String responseMessage = response.getMessage();
         assertTrue(responseMessage.equals("ok"));
@@ -88,11 +88,11 @@ public class ApiTest {
     public void allowsLogOutUser() {
         submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
-        LogOutUserResponse response = given()
+        ResponseWrapper response = given()
                 .when()
                 .get(USER_ENDPOINT + LOGOUT_ENDPOINT)
                 .then().log().all()
-                .extract().as(LogOutUserResponse.class);
+                .extract().as(ResponseWrapper.class);
 
         String responseMessage = response.getMessage();
         assertTrue(responseMessage.equals("ok"));
@@ -159,12 +159,12 @@ public class ApiTest {
         submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
 
         Integer petId = pet.getId();
-        DeleteUserResponse response = given()
+        ResponseWrapper response = given()
                 .pathParam("petId", petId)
                 .when()
                 .delete(PET_ENDPOINT+"/{petId}")
                 .then().log().all()
-                .extract().as(DeleteUserResponse.class);
+                .extract().as(ResponseWrapper.class);
 
         String expected = pet.getId().toString();
         String actual = response.getMessage();
