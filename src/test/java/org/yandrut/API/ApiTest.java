@@ -1,5 +1,6 @@
 package org.yandrut.API;
 import com.google.gson.Gson;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.yandrut.data.*;
 
@@ -8,7 +9,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.yandrut.data.Specifications.*;
 import static io.restassured.RestAssured.given;
 
 public class ApiTest {
@@ -23,15 +23,19 @@ public class ApiTest {
 
     private static PetData pet;
 
+    @BeforeMethod
+    public void buildAndSubmitSpecifications() {
+        Specifications.buildSpecifications(Specifications.requestSpec(BASE_URL),
+                Specifications.responseSpec(200));
+    }
+
     @Test
     public void allowsCreatingUser() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
-        UserData userData = new UserData(1488, "Yandrut","Yandrut",
+        UserData userData = new UserData(1488, "Yandrut", "Yandrut",
                 "Yandruter", "yandrut@yandrut.com", "yandrutYandrut",
                 "380671234567", 1488);
 
-        ResponseWrapper response = given()
+        ResponseWrapper responseBody = given()
                 .body(userData)
                 .when()
                 .post(USER_ENDPOINT)
@@ -39,33 +43,29 @@ public class ApiTest {
                 .extract().as(ResponseWrapper.class);
 
         String expected = "unknown";
-        String actual = response.getType();
+        String actual = responseBody.getType();
 
         assertEquals(expected, actual);
     }
 
     @Test
     public void allowsLoginUser() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
         LoginData loginData = new LoginData("Yandrut", "yandrutYandrut");
         String loginDataToJson = new Gson().toJson(loginData);
 
-        ResponseWrapper response = given()
+        ResponseWrapper responseBody = given()
                 .queryParam("credentials", loginDataToJson)
                 .when()
                 .get(USER_ENDPOINT + LOGIN_ENDPOINT)
                 .then().log().all()
                 .extract().as(ResponseWrapper.class);
 
-        String expectedResponse = response.getMessage();
+        String expectedResponse = responseBody.getMessage();
         assertTrue(expectedResponse.contains("logged in user session:"));
     }
 
     @Test
     public void allowsCreatingListOfUsers() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
         UserData userData = new UserData(1488, "Yandrut","Yandrut",
                 "Yandrut", "yandrut@yandrut.com", "yandrutYandrut",
                 "380671234567", 1488);
@@ -73,40 +73,36 @@ public class ApiTest {
         List <UserData> userDataList = Arrays.asList(userData, userData, userData, userData);
         String userDataListToJson = new Gson().toJson(userDataList);
 
-        ResponseWrapper response = given()
+        ResponseWrapper responseBody = given()
                 .body(userDataListToJson)
                 .when()
                 .post(USER_ENDPOINT + USER_LIST_ENDPOINT)
                 .then().log().all()
                 .extract().as(ResponseWrapper.class);
 
-        String responseMessage = response.getMessage();
-        assertTrue(responseMessage.equals("ok"));
+        String responseMessage = responseBody.getMessage();
+        assertEquals("ok", responseMessage);
     }
 
     @Test
     public void allowsLogOutUser() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
-        ResponseWrapper response = given()
+        ResponseWrapper responseBody = given()
                 .when()
                 .get(USER_ENDPOINT + LOGOUT_ENDPOINT)
                 .then().log().all()
                 .extract().as(ResponseWrapper.class);
 
-        String responseMessage = response.getMessage();
-        assertTrue(responseMessage.equals("ok"));
+        String responseMessage = responseBody.getMessage();
+        assertEquals("ok", responseMessage);
     }
 
     @Test
     public void allowsAddingNewPet() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
                 pet = PetData.createNewPet(1488, "John",
                 List.of("https://ideyka.com.ua/files/resized/products/4484.1800x1800w.jpg"),
                 "available");
 
-        PetDataResponse response = given()
+        PetDataResponse responseBody = given()
                 .body(pet)
                 .when()
                 .post(PET_ENDPOINT)
@@ -114,34 +110,30 @@ public class ApiTest {
                 .extract().as(PetDataResponse.class);
 
         String expected = "John";
-        String actual =  response.getName();
+        String actual =  responseBody.getName();
         assertEquals(expected, actual);
     }
 
     @Test
     public void allowsUpdatingPetsImage() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
         List<String> photoURLs = List.of("https://img.tsn.ua/cached/754/tsn-2cb3382837f9b91c3a25a3f20b5ee88b/thumbs/428x268/78/f1/7dfbdb544885b3f8c57c9a2b6e0bf178.jpg");
         pet.updatePetsInformation(photoURLs);
 
-        PetDataResponse response = given()
+        PetDataResponse responseBody = given()
                 .body(pet)
                 .when()
                 .put(PET_ENDPOINT)
                 .then().log().all()
                 .extract().as(PetDataResponse.class);
 
-        List<String> photoURLsActual = response.getPhotoUrls();
+        List<String> photoURLsActual = responseBody.getPhotoUrls();
         assertEquals(photoURLs, photoURLsActual);
     }
 
     @Test
     public void allowsUpdatingPetsNameAndStatus() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
         pet.updatePetsInformation("Pushok", "not online");
-        PetDataResponse response = given()
+        PetDataResponse responseBody = given()
                 .body(pet)
                 .when()
                 .put(PET_ENDPOINT)
@@ -149,17 +141,15 @@ public class ApiTest {
                 .extract().as(PetDataResponse.class);
 
         String expected = "Pushok";
-        String actual = response.getName();
+        String actual = responseBody.getName();
 
         assertEquals(expected, actual);
     }
 
     @Test
     public void allowsDeletingPet() {
-        submitSpecifications(requestSpec(BASE_URL), responseSpec(200));
-
         Integer petId = pet.getId();
-        ResponseWrapper response = given()
+        ResponseWrapper responseBody = given()
                 .pathParam("petId", petId)
                 .when()
                 .delete(PET_ENDPOINT+"/{petId}")
@@ -167,7 +157,7 @@ public class ApiTest {
                 .extract().as(ResponseWrapper.class);
 
         String expected = pet.getId().toString();
-        String actual = response.getMessage();
+        String actual = responseBody.getMessage();
 
         assertEquals(expected, actual);
     }

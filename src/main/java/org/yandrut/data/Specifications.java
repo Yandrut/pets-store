@@ -24,12 +24,12 @@ public class Specifications {
                 .build();
     }
 
-    public static void submitSpecifications(RequestSpecification request, ResponseSpecification response) {
+    public static void buildSpecifications(RequestSpecification request, ResponseSpecification response) {
         RestAssured.requestSpecification = request;
         RestAssured.responseSpecification = response;
     }
 
-    public static void submitSpecifications(RequestSpecification request) {
+    public static void buildSpecifications(RequestSpecification request) {
         RestAssured.requestSpecification = request;
     }
 }
