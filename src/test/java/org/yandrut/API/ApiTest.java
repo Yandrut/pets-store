@@ -35,7 +35,7 @@ public class ApiTest {
                 "Yandruter", "yandrut@yandrut.com", "yandrutYandrut",
                 "380671234567", 1488);
 
-        ResponseWrapper responseBody = given()
+        ResponseWrapper responseWrapper = given()
                 .body(userData)
                 .when()
                 .post(USER_ENDPOINT)
@@ -43,7 +43,7 @@ public class ApiTest {
                 .extract().as(ResponseWrapper.class);
 
         String expected = "unknown";
-        String actual = responseBody.getType();
+        String actual = responseWrapper.getType();
 
         assertEquals(expected, actual);
     }
@@ -53,14 +53,14 @@ public class ApiTest {
         LoginData loginData = new LoginData("Yandrut", "yandrutYandrut");
         String loginDataToJson = new Gson().toJson(loginData);
 
-        ResponseWrapper responseBody = given()
+        ResponseWrapper responseWrapper = given()
                 .queryParam("credentials", loginDataToJson)
                 .when()
                 .get(USER_ENDPOINT + LOGIN_ENDPOINT)
                 .then().log().all()
                 .extract().as(ResponseWrapper.class);
 
-        String expectedResponse = responseBody.getMessage();
+        String expectedResponse = responseWrapper.getMessage();
         assertTrue(expectedResponse.contains("logged in user session:"));
     }
 
@@ -73,26 +73,26 @@ public class ApiTest {
         List <UserData> userDataList = Arrays.asList(userData, userData, userData, userData);
         String userDataListToJson = new Gson().toJson(userDataList);
 
-        ResponseWrapper responseBody = given()
+        ResponseWrapper responseWrapper = given()
                 .body(userDataListToJson)
                 .when()
                 .post(USER_ENDPOINT + USER_LIST_ENDPOINT)
                 .then().log().all()
                 .extract().as(ResponseWrapper.class);
 
-        String responseMessage = responseBody.getMessage();
+        String responseMessage = responseWrapper.getMessage();
         assertEquals("ok", responseMessage);
     }
 
     @Test
     public void allowsLogOutUser() {
-        ResponseWrapper responseBody = given()
+        ResponseWrapper responseWrapper = given()
                 .when()
                 .get(USER_ENDPOINT + LOGOUT_ENDPOINT)
                 .then().log().all()
                 .extract().as(ResponseWrapper.class);
 
-        String responseMessage = responseBody.getMessage();
+        String responseMessage = responseWrapper.getMessage();
         assertEquals("ok", responseMessage);
     }
 
@@ -102,7 +102,7 @@ public class ApiTest {
                 List.of("https://ideyka.com.ua/files/resized/products/4484.1800x1800w.jpg"),
                 "available");
 
-        PetDataResponse responseBody = given()
+        PetDataResponse petDataResponse = given()
                 .body(pet)
                 .when()
                 .post(PET_ENDPOINT)
@@ -110,7 +110,7 @@ public class ApiTest {
                 .extract().as(PetDataResponse.class);
 
         String expected = "John";
-        String actual =  responseBody.getName();
+        String actual =  petDataResponse.getName();
         assertEquals(expected, actual);
     }
 
@@ -119,21 +119,21 @@ public class ApiTest {
         List<String> photoURLs = List.of("https://img.tsn.ua/cached/754/tsn-2cb3382837f9b91c3a25a3f20b5ee88b/thumbs/428x268/78/f1/7dfbdb544885b3f8c57c9a2b6e0bf178.jpg");
         pet.updatePetsInformation(photoURLs);
 
-        PetDataResponse responseBody = given()
+        PetDataResponse petDataResponse = given()
                 .body(pet)
                 .when()
                 .put(PET_ENDPOINT)
                 .then().log().all()
                 .extract().as(PetDataResponse.class);
 
-        List<String> photoURLsActual = responseBody.getPhotoUrls();
+        List<String> photoURLsActual = petDataResponse.getPhotoUrls();
         assertEquals(photoURLs, photoURLsActual);
     }
 
     @Test
     public void allowsUpdatingPetsNameAndStatus() {
         pet.updatePetsInformation("Pushok", "not online");
-        PetDataResponse responseBody = given()
+        PetDataResponse petDataResponse = given()
                 .body(pet)
                 .when()
                 .put(PET_ENDPOINT)
@@ -141,7 +141,7 @@ public class ApiTest {
                 .extract().as(PetDataResponse.class);
 
         String expected = "Pushok";
-        String actual = responseBody.getName();
+        String actual = petDataResponse.getName();
 
         assertEquals(expected, actual);
     }
@@ -149,7 +149,7 @@ public class ApiTest {
     @Test
     public void allowsDeletingPet() {
         Integer petId = pet.getId();
-        ResponseWrapper responseBody = given()
+        ResponseWrapper responseWrapper = given()
                 .pathParam("petId", petId)
                 .when()
                 .delete(PET_ENDPOINT+"/{petId}")
@@ -157,7 +157,7 @@ public class ApiTest {
                 .extract().as(ResponseWrapper.class);
 
         String expected = pet.getId().toString();
-        String actual = responseBody.getMessage();
+        String actual = responseWrapper.getMessage();
 
         assertEquals(expected, actual);
     }
