@@ -21,7 +21,7 @@ public class ApiTest {
     private static final String LOGOUT_ENDPOINT = "/logout";
     private static final String PET_ENDPOINT = "/pet";
 
-    private static PetData pet;
+    private static PetData petData;
 
     @BeforeMethod
     public void buildAndSubmitSpecifications() {
@@ -98,12 +98,12 @@ public class ApiTest {
 
     @Test
     public void allowsAddingNewPet() {
-                pet = PetData.createNewPet(1488, "John",
+                petData = PetData.createNewPet(1488, "John",
                 List.of("https://ideyka.com.ua/files/resized/products/4484.1800x1800w.jpg"),
                 "available");
 
         PetDataResponse petDataResponse = given()
-                .body(pet)
+                .body(petData)
                 .when()
                 .post(PET_ENDPOINT)
                 .then().log().all()
@@ -117,10 +117,10 @@ public class ApiTest {
     @Test
     public void allowsUpdatingPetsImage() {
         List<String> photoURLs = List.of("https://img.tsn.ua/cached/754/tsn-2cb3382837f9b91c3a25a3f20b5ee88b/thumbs/428x268/78/f1/7dfbdb544885b3f8c57c9a2b6e0bf178.jpg");
-        pet.updatePetsInformation(photoURLs);
+        petData.updatePetsInformation(photoURLs);
 
         PetDataResponse petDataResponse = given()
-                .body(pet)
+                .body(petData)
                 .when()
                 .put(PET_ENDPOINT)
                 .then().log().all()
@@ -132,9 +132,9 @@ public class ApiTest {
 
     @Test
     public void allowsUpdatingPetsNameAndStatus() {
-        pet.updatePetsInformation("Pushok", "not online");
+        petData.updatePetsInformation("Pushok", "not online");
         PetDataResponse petDataResponse = given()
-                .body(pet)
+                .body(petData)
                 .when()
                 .put(PET_ENDPOINT)
                 .then().log().all()
@@ -148,7 +148,7 @@ public class ApiTest {
 
     @Test
     public void allowsDeletingPet() {
-        Integer petId = pet.getId();
+        Integer petId = petData.getId();
         ResponseWrapper responseWrapper = given()
                 .pathParam("petId", petId)
                 .when()
@@ -156,7 +156,7 @@ public class ApiTest {
                 .then().log().all()
                 .extract().as(ResponseWrapper.class);
 
-        String expected = pet.getId().toString();
+        String expected = petData.getId().toString();
         String actual = responseWrapper.getMessage();
 
         assertEquals(expected, actual);
