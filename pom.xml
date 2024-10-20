@@ -12,35 +12,45 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <log4j.version>2.22.0</log4j.version>
+    <awaitility.version>4.2.0</awaitility.version>
+    <testng.version>7.9.0</testng.version>
+    <restAssured.version>5.4.0</restAssured.version>
+    <lombok.version>1.18.26</lombok.version>
+    <hamcrest.version>2.2</hamcrest.version>
+    <gson.version>2.10.1</gson.version>
+    <junit.version>4.13.2</junit.version>
+    <allure-rest.version>2.25.0</allure-rest.version>
+    <aspectJ.version>1.9.21</aspectJ.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.22.0</version>
+      <version>${log4j.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
-      <version>2.22.0</version>
+      <version>${log4j.version}</version>
     </dependency>
     <dependency>
       <groupId>org.awaitility</groupId>
       <artifactId>awaitility</artifactId>
-      <version>4.2.0</version>
+      <version>${awaitility.version}</version>
       <scope>main</scope>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>7.9.0</version>
+      <version>${testng.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>5.4.0</version>
+      <version>${restAssured.version}</version>
     </dependency>
     <dependency>
       <groupId>org.hamcrest</groupId>
@@ -50,34 +60,33 @@
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
-      <version>2.10.1</version>
+      <version>${gson.version}</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.26</version>
-      <scope>provided</scope>
+      <version>${lombok.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13.2</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-rest-assured</artifactId>
-      <version>2.25.0</version>
+      <version>${allure-rest.version}</version>
     </dependency>
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
-      <version>2.25.0</version>
+      <version>${allure-rest.version}</version>
     </dependency>
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
-      <version>1.9.21</version>
+      <version>${aspectJ.version}</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
