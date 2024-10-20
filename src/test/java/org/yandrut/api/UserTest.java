@@ -1,15 +1,13 @@
-package org.yandrut.API;
+package org.yandrut.api;
 import com.google.gson.Gson;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import org.yandrut.data.*;
-import org.yandrut.utils.DataReader;
-import org.yandrut.utils.LoginDataCreator;
-import org.yandrut.utils.UserDataCreator;
+import org.yandrut.utils.*;
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserTest extends BaseTest {
 
@@ -20,7 +18,7 @@ public class UserTest extends BaseTest {
 
 
     @Test
-    public void allowsCreatingUser() {
+    void allowsCreatingUser() {
         UserData userData = UserDataCreator.createUser();
 
         ResponseWrapper responseWrapper = given()
@@ -37,7 +35,7 @@ public class UserTest extends BaseTest {
     }
 
     @Test
-    public void allowsLoginUser() {
+    void allowsLoginUser() {
         LoginData loginData = LoginDataCreator.createLoginData();
         String loginDataToJson = new Gson().toJson(loginData);
 
@@ -53,7 +51,7 @@ public class UserTest extends BaseTest {
     }
 
     @Test
-    public void allowsCreatingListOfUsers() {
+    void allowsCreatingListOfUsers() {
         UserData userData = UserDataCreator.createUser();
 
         List <UserData> userDataList = Arrays.asList(userData, userData, userData, userData);
@@ -73,7 +71,7 @@ public class UserTest extends BaseTest {
     }
 
     @Test
-    public void allowsLogOutUser() {
+    void allowsLogOutUser() {
         ResponseWrapper responseWrapper = given()
                 .when()
                 .get(USER_ENDPOINT + LOGOUT_ENDPOINT)

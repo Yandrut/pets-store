@@ -1,6 +1,6 @@
-package org.yandrut.API;
+package org.yandrut.api;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import org.yandrut.data.PetData;
 import org.yandrut.data.PetDataResponse;
 import org.yandrut.data.ResponseWrapper;
@@ -8,14 +8,14 @@ import org.yandrut.utils.DataReader;
 import org.yandrut.utils.PetDataCreator;
 import java.util.List;
 import static io.restassured.RestAssured.given;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PetTest {
+public class PetTest extends BaseTest {
     private static PetData petData;
     private static final String PET_ENDPOINT = DataReader.getTestData("endpoints.pet");
 
     @Test
-    public void allowsAddingNewPet() {
+    void allowsAddingNewPet() {
         petData = PetDataCreator.createNewPet();
 
         PetDataResponse petDataResponse = given()
@@ -25,13 +25,13 @@ public class PetTest {
                 .then().log().all()
                 .extract().as(PetDataResponse.class);
 
-        String expected = DataReader.getTestData("pet.name");
+        String expected = DataReader.getTestData("pet.id");
         String actual = petDataResponse.getName();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void allowsUpdatingPetsImage() {
+    void allowsUpdatingPetsImage() {
         List<String> photoURLs = List.of(DataReader.getTestData("pet.updatedImages"));
         petData.updatePetsInformation(photoURLs);
 
@@ -47,7 +47,7 @@ public class PetTest {
     }
 
     @Test
-    public void allowsUpdatingPetsNameAndStatus() {
+    void allowsUpdatingPetsNameAndStatus() {
         String updatedName = DataReader.getTestData("pet.updatedName");
         petData.updatePetsInformation(updatedName, DataReader.getTestData("pet.updatedStatus"));
         PetDataResponse petDataResponse = given()
@@ -63,7 +63,7 @@ public class PetTest {
     }
 
     @Test
-    public void allowsDeletingPet() {
+    void allowsDeletingPet() {
         Integer petId = petData.getId();
         String pathParam = DataReader.getTestData("params.allowsToDelete.pathParam");
 
