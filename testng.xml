@@ -3,7 +3,7 @@
 <suite name="Pet Store Suite" verbose="1" >
     <test name="Api Tests" >
         <classes>
-            <class name="org.yandrut.API.PetTest">
+            <class name="org.yandrut.api.PetTest">
                 <methods>
                     <include name="allowsAddingNewPet"/>
                     <include name="allowsUpdatingPetsImage"/>
@@ -11,7 +11,7 @@
                     <include name="allowsDeletingPet"/>
                 </methods>
             </class>
-            <class name="org.yandrut.API.UserTest">
+            <class name="org.yandrut.api.UserTest">
               <methods>
                   <include name="allowsCreatingUser"/>
                   <include name="allowsLoginUser"/>
